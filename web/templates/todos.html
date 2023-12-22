@@ -1,0 +1,9 @@
+<div id="errors" hx-swap-oob="true"></div>
+<div>
+    <h3 class="text-center font-bold">Ongoing</h3>
+    {{ range . }} {{if not .Completed}} {{ template "todo" . }} {{end}} {{end}}
+</div>
+<div>
+    <h3 class="text-center font-bold">Complete</h3>
+    {{ range . }} {{if .Completed}} {{ template "todo" . }} {{end}} {{end}}
+</div>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="static/style.css" rel="stylesheet" />
+        <script src="static/htmx.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script defer>
+            document.addEventListener("htmx:beforeOnLoad", function (evt) {
+                switch (evt.detail.xhr.status) {
+                    case 404:
+                    case 409:
+                        evt.detail.shouldSwap = true;
+                        break;
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <div
+            class="grid w-screen h-screen grid-cols-1 grid-rows-1 place-items-center"
+        >
+            <main class="shadow-xl p-6 rounded-md border w-2/3">
+                <h1 class="text-3xl font-bold text-center mb-4">Todos</h1>
+                <form hx-post="/todos" hx-target="#todos" class="flex">
+                    <input
+                        class="border w-full rounded mr-1 p-1 hover:shadow active:shadow"
+                        type="text"
+                        name="name"
+                    />
+                    <input
+                        class="border bg-slate-100 p-1 px-2 rounded hover:bg-slate-200 hover:shadow cursor-pointer"
+                        type="submit"
+                        value="+"
+                    />
+                </form>
+                <div id="errors"></div>
+                <div
+                    id="todos"
+                    hx-get="/todos"
+                    hx-trigger="load"
+                    class="grid grid-cols-2 gap-1 w-full mt-4"
+                ></div>
+            </main>
+        </div>
+    </body>
+</html>

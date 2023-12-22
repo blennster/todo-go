@@ -1,0 +1,24 @@
+{{define "todo"}}
+<div
+    hx-swap="innerHTML"
+    hx-target="#todos"
+    class="border rounded p-1 hover:shadow flex justify-between px-2 my-1"
+>
+    <div>
+        <input
+            type="checkbox"
+            {{if
+            .Completed}}checked{{end}}
+            hx-patch="/todos/{{.Name}}"
+            class="cursor-pointer"
+        />
+        <span>{{.Name}}</span>
+    </div>
+    <input
+        type="button"
+        value="x"
+        hx-delete="/todos/{{.Name}}"
+        class="cursor-pointer"
+    />
+</div>
+{{end}}
