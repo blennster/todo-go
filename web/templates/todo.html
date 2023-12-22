@@ -2,7 +2,7 @@
 <div
     hx-swap="innerHTML"
     hx-target="#todos"
-    class="border rounded p-1 hover:shadow flex justify-between px-2 my-1"
+    class="border rounded p-2 px-3 hover:shadow flex justify-between"
 >
     <div>
         <input
@@ -18,7 +18,7 @@
         type="button"
         value="x"
         hx-delete="/todos/{{.Name}}"
-        class="cursor-pointer"
+        class="cursor-pointer hover:text-red-500 hover:font-bold text-gray-500"
     />
 </div>
 {{end}}

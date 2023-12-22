@@ -26,12 +26,12 @@
                 <h1 class="text-3xl font-bold text-center mb-4">Todos</h1>
                 <form hx-post="/todos" hx-target="#todos" class="flex">
                     <input
-                        class="border w-full rounded mr-1 p-1 hover:shadow active:shadow"
+                        class="border w-full rounded mr-1 p-2 px-3 hover:shadow active:shadow"
                         type="text"
                         name="name"
                     />
                     <input
-                        class="border bg-slate-100 p-1 px-2 rounded hover:bg-slate-200 hover:shadow cursor-pointer"
+                        class="border bg-blue-300 p-2 px-3 rounded hover:bg-blue-500 hover:shadow cursor-pointer"
                         type="submit"
                         value="+"
                     />
@@ -41,7 +41,7 @@
                     id="todos"
                     hx-get="/todos"
                     hx-trigger="load"
-                    class="grid grid-cols-2 gap-1 w-full mt-4"
+                    class="grid grid-cols-2 gap-2 w-full mt-4"
                 ></div>
             </main>
         </div>
