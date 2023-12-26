@@ -2,6 +2,7 @@ package routes
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/blennster/todo-go/internal"
 	"github.com/gin-gonic/gin"
@@ -17,6 +18,7 @@ func GetTodos(c *gin.Context) {
 func AddTodo(c *gin.Context) {
 	store := internal.GetStore(c)
 	name := c.PostForm("name")
+	name = strings.TrimSpace(name)
 	if store.Add(internal.Todo{Name: name, Completed: false}) {
 		GetTodos(c)
 	} else {
@@ -30,7 +32,7 @@ func ToggleTodo(c *gin.Context) {
 	if store.Toggle(name) {
 		GetTodos(c)
 	} else {
-		Error(c, "todo not found", http.StatusConflict)
+		Error(c, "todo not found", http.StatusNotFound)
 	}
 }
 
@@ -40,6 +42,6 @@ func DeleteTodo(c *gin.Context) {
 	if store.Delete(name) {
 		GetTodos(c)
 	} else {
-		Error(c, "todo not found", http.StatusConflict)
+		Error(c, "todo not found", http.StatusNotFound)
 	}
 }

@@ -1,9 +1,9 @@
 <div id="errors" hx-swap-oob="true"></div>
-<div class="grid gap-2">
-    <h3 class="text-center font-bold">Ongoing</h3>
+<div class="column">
+    <h4 class="subtitle has-text-centered">Ongoing</h4>
     {{ range . }} {{if not .Completed}} {{ template "todo" . }} {{end}} {{end}}
 </div>
-<div class="grid gap-2">
-    <h3 class="text-center font-bold">Complete</h3>
+<div class="column">
+    <h4 class="subtitle has-text-centered">Complete</h4>
     {{ range . }} {{if .Completed}} {{ template "todo" . }} {{end}} {{end}}
 </div>

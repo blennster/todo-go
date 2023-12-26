@@ -4,6 +4,7 @@ import (
 	// "fmt"
 	"fmt"
 	"net/http"
+	// "net/http"
 
 	// "github.com/blennster/todo-go/routes"
 	"github.com/blennster/todo-go/internal"
@@ -17,6 +18,7 @@ func main() {
 	r.Static("/static", "web/static")
 
 	store := internal.NewTodoStore()
+	store.Add(internal.Todo{Name: "Todo 1", Completed: false})
 
 	r.Use(internal.TodoMiddleware(&store))
 

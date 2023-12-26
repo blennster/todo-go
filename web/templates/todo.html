@@ -1,24 +1,15 @@
 {{define "todo"}}
-<div
-    hx-swap="innerHTML"
-    hx-target="#todos"
-    class="border rounded p-2 px-3 hover:shadow flex justify-between"
->
-    <div>
+<div hx-swap="innerHTML" hx-target="#todos" class="box field is-grouped">
+    <label class="checkbox control is-expanded">
         <input
             type="checkbox"
+            class="checkbox"
             {{if
             .Completed}}checked{{end}}
             hx-patch="/todos/{{.Name}}"
-            class="cursor-pointer"
         />
-        <span>{{.Name}}</span>
-    </div>
-    <input
-        type="button"
-        value="x"
-        hx-delete="/todos/{{.Name}}"
-        class="cursor-pointer hover:text-red-500 hover:font-bold text-gray-500"
-    />
+        {{.Name}}
+    </label>
+    <button type="control button" hx-delete="/todos/{{.Name}}" class="delete" />
 </div>
 {{end}}
